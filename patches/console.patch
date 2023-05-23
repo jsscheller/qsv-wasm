@@ -1,0 +1,22 @@
+diff --git a/src/term.rs b/src/term.rs
+index 0a40258..c36f0a7 100644
+--- a/src/term.rs
++++ b/src/term.rs
+@@ -112,7 +112,7 @@ impl<'a> TermFeatures<'a> {
+         {
+             TermFamily::UnixTerm
+         }
+-        #[cfg(target_arch = "wasm32")]
++        #[cfg(all(target_arch = "wasm32", not(target_os = "emscripten")))]
+         {
+             TermFamily::Dummy
+         }
+@@ -626,7 +626,7 @@ impl<'a> Read for &'a Term {
+ 
+ #[cfg(unix)]
+ pub use crate::unix_term::*;
+-#[cfg(target_arch = "wasm32")]
++#[cfg(all(target_arch = "wasm32", not(target_os = "emscripten")))]
+ pub use crate::wasm_term::*;
+ #[cfg(windows)]
+ pub use crate::windows_term::*;

@@ -1,0 +1,17 @@
+{
+  "name": "@jspawn/qsv-wasm",
+  "version": "0.1.0",
+  "description": "qsv compiled to WASM",
+  "main": "qsv.js",
+  "module": "qsv.mjs",
+  "scripts": {},
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/jsscheller/qsv-wasm.git"
+  },
+  "license": "MIT",
+  "devDependencies": {
+    "mocha": "^10.0.0"
+  },
+  "dependencies": {}
+}

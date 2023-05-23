@@ -1,0 +1,15 @@
+[submodule "lib/qsv"]
+	path = lib/qsv
+	url = https://github.com/jqnatividad/qsv.git
+[submodule "lib/console"]
+	path = lib/console
+	url = https://github.com/console-rs/console.git
+[submodule "lib/instant"]
+	path = lib/instant
+	url = https://github.com/sebcrozet/instant.git
+[submodule "lib/iana-time-zone"]
+	path = lib/iana-time-zone
+	url = https://github.com/strawlab/iana-time-zone.git
+[submodule "lib/grex"]
+	path = lib/grex
+	url = https://github.com/pemistahl/grex.git

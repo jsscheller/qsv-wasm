@@ -1,0 +1,34 @@
+diff --git a/Cargo.toml b/Cargo.toml
+index f22577a..934a2aa 100644
+--- a/Cargo.toml
++++ b/Cargo.toml
+@@ -27,11 +27,11 @@ core-foundation-sys = "0.8.3"
+ [target.'cfg(target_os = "windows")'.dependencies]
+ windows = { version = "0.48.0", features = [ "Globalization" ] }
+ 
+-[target.'cfg(target_arch = "wasm32")'.dependencies]
++[target.'cfg(all(target_arch = "wasm32", not(any(target_os = "emscripten", target_os = "wasi"))))'.dependencies]
+ js-sys = "0.3.50"
+ wasm-bindgen = "0.2.70"
+ 
+-[target.'cfg(target_arch = "wasm32")'.dev-dependencies]
++[target.'cfg(all(target_arch = "wasm32", not(any(target_os = "emscripten", target_os = "wasi"))))'.dev-dependencies]
+ wasm-bindgen-test = "0.3"
+ 
+ [target.'cfg(target_os = "haiku")'.dependencies]
+diff --git a/src/lib.rs b/src/lib.rs
+index fe4e3fb..2116f6e 100644
+--- a/src/lib.rs
++++ b/src/lib.rs
+@@ -37,7 +37,10 @@ mod ffi_utils;
+ #[cfg_attr(target_os = "windows", path = "tz_windows.rs")]
+ #[cfg_attr(any(target_os = "macos", target_os = "ios"), path = "tz_macos.rs")]
+ #[cfg_attr(
+-    all(target_arch = "wasm32", not(target_os = "wasi")),
++    all(
++        target_arch = "wasm32",
++        not(any(target_os = "emscripten", target_os = "wasi"))
++    ),
+     path = "tz_wasm32.rs"
+ )]
+ #[cfg_attr(
